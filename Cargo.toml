@@ -2,6 +2,12 @@
 name = "gap-buffer"
 version = "0.1.0"
 authors = ["Nathan Sizemore <nathanrsizemore@gmail.com>"]
+description = "Gap buffer implementation"
+readme = "README.md"
+keywords = ["gapbuffer", "textbuffer", "buffer", "gap", "text"]
+license = "MPL-2.0"
+repository = "https://github.com/nathansizemore/gap-buffer-rs"
+documentation = "https://docs.rs/gap-buffer-rs"
 
 [dependencies]
 libc = "^0.2.22"
