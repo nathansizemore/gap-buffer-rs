@@ -1,0 +1,7 @@
+[package]
+name = "gap-buffer"
+version = "0.1.0"
+authors = ["Nathan Sizemore <nathanrsizemore@gmail.com>"]
+
+[dependencies]
+libc = "^0.2.22"

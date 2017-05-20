@@ -1,0 +1,10 @@
+[package]
+name = "insert"
+version = "0.1.0"
+authors = ["Nathan Sizemore <nathanrsizemore@gmail.com>"]
+
+[dependencies]
+gap-buffer = { path="../../" }
+gapbuffer = "^0.1.1"
+rand = "^0.3.15"
+scribe = "^0.5.6"
