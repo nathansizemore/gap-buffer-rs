@@ -17,7 +17,7 @@ use rand::Rng;
 use scribe::buffer::Position;
 
 
-const INSERTS: usize = 10000;
+const INSERTS: usize = 1000;
 
 
 struct BenchResult {

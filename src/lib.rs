@@ -15,6 +15,8 @@ use std::ops::{Drop, Range};
 const CHUNK_SIZE: isize = 32;
 
 
+/// Dynamic array that allows efficient insertion and removal operations
+/// that are near the same location. Ideal for text editors.
 pub struct GapBuffer {
     buf_start: *mut u8,
     gap_start: *mut u8,
@@ -23,6 +25,7 @@ pub struct GapBuffer {
 }
 
 impl GapBuffer {
+    /// Inserts `s` into the buffer at `offset`.
     pub fn insert_str(&mut self, offset: usize, s: &str) {
         let s_len = s.len() as isize;
         if s_len > self.gap_len() {
@@ -40,6 +43,7 @@ impl GapBuffer {
         }
     }
 
+    /// Removes `range` from the buffer.
     pub fn remove(&mut self, range: Range<usize>) {
         let buf_len = self.buf_len() as usize;
         assert!(range.start < range.end, "Invalid range: {:?}", range);
@@ -55,6 +59,11 @@ impl GapBuffer {
         self.insert_str(head.len(), &tail);
     }
 
+    /// Creates a new buffer with a `capacity` sized allocation.
+    ///
+    /// # Panics
+    ///
+    /// * If `malloc` returns `NULL`.
     pub fn with_capacity(capacity: usize) -> GapBuffer {
         let buffer = unsafe {
             let size = mem::size_of::<u8>() * capacity;
@@ -197,8 +206,8 @@ fn string_from_segment(start: *mut u8, len: usize) -> String {
 
 #[cfg(test)]
 mod tests {
-
     use super::GapBuffer;
+
 
     #[test]
     fn insert_str_1() {
