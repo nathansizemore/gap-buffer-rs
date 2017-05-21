@@ -55,8 +55,8 @@ impl GapBuffer {
         let tail = &s[range.end..];
 
         self.clear();
-        self.insert_str(0, &head);
-        self.insert_str(head.len(), &tail);
+        self.insert_str(0, head);
+        self.insert_str(head.len(), tail);
     }
 
     /// Creates a new buffer with a `capacity` sized allocation.
